@@ -50,21 +50,23 @@ class JobRunner(object):
 		self.submit_file()
 		wd = os.getwd()
 		source_file = os.path.join(wd, 'submit.sh')
-		if self.layer == 1:
-			for i in os.listdir(basedir):
-				folder = os.path.join(wd, i)
-				dst_file = os.path.join(folder, 'submit.sh')
-				copyfile(source_file, dst_file)
-				self.submit_command()
-
-		if self.layer == 2:
-			for i in os.listdir(basedir):
-				folder = os.path.join(wd, i)
+		
+		for i in os.listdir(basedir):
+			folder = os.path.join(wd, i)
+			
+			if self.layer == 2:
 				for j in os.listdir(folder):
 					subfolder = os.path.join(folder, j)
 					dst_file = os.path.join(subfolder, 'submit.sh')
 					copyfile(source_file, dst_file)
 					self.submit_command()
+
+			elif self.layer == 1:
+				dst_file = os.path.join(folder, 'submit.sh')
+				copyfile(source_file, dst_file)
+				self.submit_command()
+
+
 
 
 
