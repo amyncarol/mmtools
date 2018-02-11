@@ -1,6 +1,7 @@
 import unittest
 from pymatgen.io.vasp.inputs import Poscar
 from mmtools.structure.strain import StrainMaker
+
 class TestStrainMaker(unittest.TestCase):
 	def setUp(self):
 		self.struc = Poscar.from_file('../data/POSCAR_Br').structure
