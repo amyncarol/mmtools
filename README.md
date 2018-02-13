@@ -1,1 +1,2 @@
-# mmtools
+tools for material modeling
+
