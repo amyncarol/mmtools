@@ -12,11 +12,13 @@ def store_structures(folder, filename):
 		filename: filename to store the pickle(in folder)
 	"""
 	structure_list = []
-	for subfolder in os.listdir(folder):
+	for i, subfolder in enumerate(os.listdir(folder)):
 		vasprun_file = os.path.join(folder, subfolder+'/vasprun.xml')
 		if os.path.exists(vasprun_file):
 			struc = Vasprun(vasprun_file).final_structure
 			structure_list.append(struc)
+		if i%10 == 0:
+			print("read the {}th vasprun.xml file".format(i))
 
 	with open(os.path.join(folder, filename), 'wb') as f:
 		pickle.dump(structure_list, f, -1)
