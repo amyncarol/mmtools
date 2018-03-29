@@ -4,6 +4,7 @@ from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 import random
 from pymatgen.io.vasp.sets import MPRelaxSet
 import numpy as np
+from pymatgen.analysis.structure_matcher import *
 
 class SolidSolutionMaker:
     """
@@ -15,6 +16,56 @@ class SolidSolutionMaker:
         self.struc2 = struc2
         self.percent = percent
         self.scaling_list = scaling_list
+
+    def can_match(self):
+    	"""
+    	judge whether struc1 and struc2 match or not. Only consider if their structures are compatible.
+
+    	Returns:
+    		boolean
+    	"""
+    	matcher = StructureMatcher(comparator=FrameworkComparator())
+    	return matcher.fit(self.struc1, self.struc2)
+
+    def can_mix(self, radii_diff = 0.2):
+    	"""
+    	judge whether struc1 and struc2 can mix or not. 
+
+    	1\ Consider structure matching. 
+
+        2\ We only allow mixing at one set of symmetrically equivalent sites,
+         at these sites, the mixing element should have similar atomic radii.
+         At all other site, the element should be the same.
+
+        Args: 
+            radii_diff(Angstrom): the difference in atomic radii should be less than radii_diff. 
+    
+    	Returns:
+    		boolean
+    	"""
+    	if not self.can_match():
+    		return False
+    	else:
+            sym_struc1 = SpacegroupAnalyzer(self.struc1).get_symmetrized_structure()
+            sym_struc2 = SpacegroupAnalyzer(self.struc2).get_symmetrized_structure()
+
+            sites_searched = []
+            num_slight_diff = 0
+            for site1, site2 in zip(sym_struc1.sites, sym_struc2.sites):
+                if site1 not in sites_searched:
+                    if site1.specie.symbol != site2.specie.symbol:
+                        abs_diff = abs(site1.specie.atomic_radius - site2.specie.atomic_radius)
+                        #print(site1.specie.atomic_radius, site2.specie.atomic_radius)
+                        #print(abs_diff)
+                        if abs_diff < radii_diff:
+                            num_slight_diff += 1
+                        else:
+                            return False
+                sites_searched += sym_struc1.find_equivalent_sites(site1)
+            if num_slight_diff == 1:
+                return True
+            else:
+                return False
 
     def get_strain(self):
         """
@@ -35,11 +86,12 @@ class SolidSolutionMaker:
         struc_new.apply_strain(strain)
         return struc_new
 
-    def get_supercell(self):
+    def get_supercell(self, isprint=True):
         struc = self.apply_strain()
         c_struc = SpacegroupAnalyzer(struc).get_conventional_standard_structure()
         c_struc.make_supercell(self.scaling_list)
-        print('Your supercell has {} atoms in total\n'.format(len(c_struc.sites)))
+        if isprint:
+        	print('Your supercell has {} atoms in total\n'.format(len(c_struc.sites)))
         return c_struc
 
     def get_mixing_elements(self):
@@ -49,16 +101,17 @@ class SolidSolutionMaker:
     	e2 = (s2-s1).pop()
     	return e1, e2
 
-    def get_random_supercell(self):
+    def get_random_supercell(self, isprint=True):
     	"""
     	returns the solid solution Structure object and the actual mixing percent for struc1
     	"""
-    	struc = self.get_supercell()
+    	struc = self.get_supercell(isprint=isprint)
     	sites = [i for i in range(len(struc.sites)) if struc.sites[i].specie==self.get_mixing_elements()[0]]
     	n = int((1-self.percent)*len(sites))
-    	print('Now you will replace {} {} atoms with {} atoms, the actual mixing percent for {} is {}\n'. \
-    		format(n, self.get_mixing_elements()[0], self.get_mixing_elements()[1], \
-    			self.get_mixing_elements()[0], 1-float(n)/len(sites)))
+    	if isprint:
+	    	print('Now you will replace {} {} atoms with {} atoms, the actual mixing percent for {} is {}\n'. \
+	    		format(n, self.get_mixing_elements()[0], self.get_mixing_elements()[1], \
+	    			self.get_mixing_elements()[0], 1-float(n)/len(sites)))
     	random_choose = random.sample(sites, n)
     	for i in random_choose:
     		struc.replace(i, self.get_mixing_elements()[1])

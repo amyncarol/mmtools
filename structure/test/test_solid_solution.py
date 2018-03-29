@@ -1,12 +1,14 @@
 import unittest
 from pymatgen.io.vasp.inputs import Poscar
-from SolidSolutionMaker import SolidSolutionMaker
 import os
+import sys
+sys.path.insert(0, '../')
+from solid_solution import SolidSolutionMaker
 
 class TestSolidSolutionMaker(unittest.TestCase):
     def setUp(self):
-        self.struc1 = Poscar.from_file('test/POSCAR_Br').structure
-        self.struc2 = Poscar.from_file('test/POSCAR_Cl').structure
+        self.struc1 = Poscar.from_file('../../data/POSCAR_Br').structure
+        self.struc2 = Poscar.from_file('../../data/POSCAR_Cl').structure
         self.a1 = self.struc1.lattice.a
         self.a2 = self.struc2.lattice.a
 
@@ -24,7 +26,7 @@ class TestSolidSolutionMaker(unittest.TestCase):
 
     def test_get_supercell(self):
         ssm = SolidSolutionMaker(self.struc1, self.struc2, 1, [2,2,1])
-        ssm.get_supercell()
+        ssm.get_supercell(False)
 
     def test_get_mixing_elements(self):
         ssm = SolidSolutionMaker(self.struc1, self.struc2, 1)
@@ -33,11 +35,43 @@ class TestSolidSolutionMaker(unittest.TestCase):
 
     def test_get_random_supercell(self):
         ssm = SolidSolutionMaker(self.struc1, self.struc2, 0.1)
-        ssm.get_random_supercell()
+        ssm.get_random_supercell(False)
         ssm = SolidSolutionMaker(self.struc1, self.struc2, 0.3)
-        ssm.get_random_supercell()
+        ssm.get_random_supercell(False)
         ssm = SolidSolutionMaker(self.struc1, self.struc2, 1)
-        ssm.get_random_supercell()
+        ssm.get_random_supercell(False)
+
+    def test_can_match(self):
+        ssm = SolidSolutionMaker(self.struc1, self.struc2, 0.1)
+        self.assertTrue(ssm.can_match())
+
+        struc_distorted = Poscar.from_file('../../data/POSCAR_Cl_distorted').structure
+        ssm = SolidSolutionMaker(self.struc2, struc_distorted, 0.1)
+        self.assertFalse(ssm.can_match())
+
+    def test_can_mix_no_diff(self):
+        ssm = SolidSolutionMaker(self.struc1, self.struc1, 0.1)
+        self.assertFalse(ssm.can_mix(radii_diff = 0.2))
+
+    def test_can_mix_one_slight_diff(self):
+        ssm = SolidSolutionMaker(self.struc1, self.struc2, 0.1)
+        self.assertTrue(ssm.can_mix(radii_diff = 0.2))
+
+    def test_can_mix_two_slight_diff(self):
+        struc3 = Poscar.from_file('../../data/POSCAR_Cl_Sb').structure
+        ssm = SolidSolutionMaker(self.struc1, struc3, 0.1)
+        self.assertFalse(ssm.can_mix(radii_diff = 0.2))
+
+    def test_can_mix_one_huge_diff(self):
+        ssm = SolidSolutionMaker(self.struc1, self.struc2, 0.1)
+        self.assertFalse(ssm.can_mix(radii_diff = 0.1))
+
+    def test_can_mix_two_huge_diff(self):
+        struc3 = Poscar.from_file('../../data/POSCAR_Cl_Sb').structure
+        ssm = SolidSolutionMaker(self.struc1, struc3, 0.1)
+        self.assertFalse(ssm.can_mix(radii_diff = 0.1))
+
+
         
 if __name__ == '__main__':
     unittest.main()
