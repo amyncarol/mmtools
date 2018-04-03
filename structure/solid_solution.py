@@ -132,8 +132,11 @@ class SolidSolutionFileWriter:
             ssm = SolidSolutionMaker(self.struc1, self.struc2, i, scaling_list=self.scaling_list)
             e1, e2 = ssm.get_mixing_elements()
             struc, percent = ssm.get_random_supercell()
-            mpset = MPRelaxSet(struc,  user_incar_settings={'EDIFF': 1e-5, 'EDIFFG': -0.01, 'ALGO': 'N', 'ISMEAR': 0})
-            mpset.write_input(self.wd+e1.symbol+'_{0:.3f}'.format(percent)+e2.symbol+'_{0:.3f}'.format(1-percent))
+            if percent == 1.0 or percent == 0.0:
+                pass
+            else:
+                mpset = MPRelaxSet(struc,  user_incar_settings={'EDIFF': 1e-5, 'EDIFFG': -0.01, 'ALGO': 'F', 'ISMEAR': 0})
+                mpset.write_input(self.wd+'_'+e1.symbol+'_{0:.3f}'.format(percent)+'_'+e2.symbol+'_{0:.3f}'.format(1-percent))
 
     def get_true_percent(self):
         true_percent = []

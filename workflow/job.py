@@ -67,9 +67,60 @@ class JobRunner(object):
 				self.submit_command()
 
 
+def bundle_submit_file(folder, n_jobs, queue='skx-normal', n_node=4, n_tasks_per_node=24, walltime='48:00:00', \
+	executable='ibrun /home1/05018/tg843171/vasp.5.4.4_vtst/bin/vasp_std'):
+	"""
+	generate several submit scripts, each submit script can run multiple vasp jobs, this is a way to deal with
+	the limit of number of jobs that can be submitted on some clusters.
 
+	Args:
+		folder: the parent folder of the vasp folders 
+		n_jobs: the number of submit files to generate, should be less than the limit of jobs that can be submitted at a time.
+		queue: after "#SBATCH -p"
+		n_node: after "#SBATCH -N"
+		n_tasks_per_node: after "#SBATCH --ntasks-per-node"
+		walltime: after "#SBATCH -t"
+		executable: the executable to run vasp
 
+	Writes:
+		submit_0.sh
+		submit_1.sh
+		....
 
+	Example submit file:
+		#!/bin/bash
+
+		#SBATCH -J myjob           
+		#SBATCH -o myjob.o%j      
+		#SBATCH -e myjob.e%j     
+		#SBATCH -p skx-dev       
+		#SBATCH -N 4               
+		#SBATCH --ntasks-per-node 24             
+		#SBATCH -t 00:30:00        
+		###SBATCH -A myproject       
+
+		ibrun /home1/05018/tg843171/vasp.5.4.4_vtst/bin/vasp_std
+	"""
+	subfolders = [subfolder for subfolder in os.listdir(folder) if os.path.isdir(os.path.join(folder, subfolder))]
+	n_batch = len(subfolders)//n_jobs + 1 * (len(subfolders)%n_jobs != 0)
+	for i in range(n_jobs):
+		with open(os.path.join(folder, 'submit_' + str(i) + '.sh'), 'w') as f:
+			f.write('#!/bin/bash\n')
+			f.write('#SBATCH -J myjob\n')
+			f.write('#SBATCH -o myjob.o%j\n')      
+			f.write('#SBATCH -e myjob.e%j\n')    
+			f.write('#SBATCH -p ' + queue+'\n')      
+			f.write('#SBATCH -N ' + str(n_node)+'\n')             
+			f.write('#SBATCH --ntasks-per-node ' + str(n_tasks_per_node)+'\n')  
+			f.write('#SBATCH -t '+walltime+'\n')        
+			f.write('###SBATCH -A myproject\n') 
+			for j in range(i*n_batch, min((i+1)*n_batch, len(subfolders))):
+				f.write('cd ' + subfolders[j]+'\n')
+				f.write(executable+'\n')
+				f.write('cd ..\n')
+
+if __name__=='__main__':
+	bundle_submit_file('/Users/yao/Google Drive/mmtools/workflow/test_data', 2)
 
 
 

@@ -49,6 +49,8 @@ def store_structures_parallel(folder, filename, n_process):
 	with open(os.path.join(folder, filename), 'wb') as f:
 		pickle.dump(structure_list, f, -1)
 
+	####TO DO: solving the encoding!!!!!!!! btw python2 and python3
+
 def vasp_to_struc(vasprun_file):
 	return Vasprun(vasprun_file).final_structure
 
@@ -65,6 +67,8 @@ def load_structures(filepath):
 	return structure_list
 	#print(structure_list)
 
+	####TO DO: solving the encoding!!!!!!!!
+
 if __name__ == '__main__':
-	#store_structures_parallel('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation', 'structure.pkl', 4)
+	store_structures_parallel('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation', 'structure.pkl', 4)
 	print(load_structures('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation/structure.pkl'))
