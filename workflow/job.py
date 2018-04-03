@@ -67,8 +67,8 @@ class JobRunner(object):
 				self.submit_command()
 
 
-def bundle_submit_file(folder, n_jobs, queue='skx-normal', n_node=4, n_tasks_per_node=24, walltime='48:00:00', \
-	executable='ibrun /home1/05018/tg843171/vasp.5.4.4_vtst/bin/vasp_std'):
+def bundle_submit_file(folder, path_of_custodian_file, n_jobs, queue='skx-normal', \
+		n_node=4, n_tasks_per_node=24, walltime='48:00:00'):
 	"""
 	generate several submit scripts, each submit script can run multiple vasp jobs, this is a way to deal with
 	the limit of number of jobs that can be submitted on some clusters.
@@ -80,7 +80,6 @@ def bundle_submit_file(folder, n_jobs, queue='skx-normal', n_node=4, n_tasks_per
 		n_node: after "#SBATCH -N"
 		n_tasks_per_node: after "#SBATCH --ntasks-per-node"
 		walltime: after "#SBATCH -t"
-		executable: the executable to run vasp
 
 	Writes:
 		submit_0.sh
@@ -116,11 +115,13 @@ def bundle_submit_file(folder, n_jobs, queue='skx-normal', n_node=4, n_tasks_per
 			f.write('###SBATCH -A myproject\n') 
 			for j in range(i*n_batch, min((i+1)*n_batch, len(subfolders))):
 				f.write('cd ' + subfolders[j]+'\n')
-				f.write(executable+'\n')
+				f.write('cp ' + path_of_custodian_file + ' ./custodian_job.py\n')
+				f.write('python custodian_job.py\n')
 				f.write('cd ..\n')
 
 if __name__=='__main__':
-	bundle_submit_file('/Users/yao/Google Drive/mmtools/workflow/test_data', 2)
+	bundle_submit_file('/Users/yao/Google Drive/mmtools/workflow/test_data', \
+		'/Users/yao/Google Drive/mmtools/workflow/test_data/custodian_job.py', 2)
 
 
 
