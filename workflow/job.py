@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, '../../')
 import mmtools.data as data
 import os
 from shutil import copyfile
