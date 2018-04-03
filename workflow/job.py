@@ -116,10 +116,12 @@ def bundle_submit_file(folder, path_of_custodian_file, n_jobs, queue='skx-normal
 			f.write('#SBATCH -t '+walltime+'\n')        
 			f.write('###SBATCH -A myproject\n') 
 			for j in range(i*n_batch, min((i+1)*n_batch, len(subfolders))):
+				f.write('\n')
 				f.write('cd ' + subfolders[j]+'\n')
 				f.write('cp ' + path_of_custodian_file + ' ./custodian_job.py\n')
 				f.write('python custodian_job.py\n')
 				f.write('cd ..\n')
+				f.write('echo \"{}\" >> log_{}\n'.format(subfolders[j], i))
 
 if __name__=='__main__':
 	bundle_submit_file('/Users/yao/Google Drive/mmtools/workflow/test_data', \
