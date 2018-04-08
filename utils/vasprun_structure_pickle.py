@@ -67,8 +67,6 @@ def load_structures(filepath):
 	return structure_list
 	#print(structure_list)
 
-	####TO DO: solving the encoding!!!!!!!!
-
 if __name__ == '__main__':
 	store_structures_parallel('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation', 'structure.pkl', 4)
 	print(load_structures('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation/structure.pkl'))
