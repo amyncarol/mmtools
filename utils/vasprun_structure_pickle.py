@@ -2,6 +2,9 @@ from pymatgen.io.vasp.outputs import Vasprun
 import os
 import pickle
 from multiprocessing import Pool
+import sys
+import argparse
+
 
 def store_structures(folder, filename):
 	"""
@@ -68,5 +71,11 @@ def load_structures(filepath):
 	#print(structure_list)
 
 if __name__ == '__main__':
-	store_structures_parallel('/work/05018/tg843171/stampede2/Ab/2116/solid_solution_ml/complete', 'structure.pkl', 4)
+	parser = argparse.ArgumentParser(description='Pickle all structures in this folder')
+	parser.add_argument('folder', help='folder containing subfolder with vasprun.xml files.')
+	parser.add_argument('-f', '--filename', default='structure.pkl', help='filename of the pickle file.')
+	parser.add_argument('-t', '--threads', default=4, type=int, help='number of threads to use (default: 4)')
+	args = parser.parse_args(sys.argv[1:])
+
+	store_structures_parallel(args.folder, args.filename, args.threads)
 	#print(load_structures('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation/structure.pkl'))
