@@ -68,5 +68,5 @@ def load_structures(filepath):
 	#print(structure_list)
 
 if __name__ == '__main__':
-	store_structures_parallel('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation', 'structure.pkl', 4)
-	print(load_structures('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation/structure.pkl'))
+	store_structures_parallel('/work/05018/tg843171/stampede2/Ab/2116/solid_solution_ml/complete', 'structure.pkl', 4)
+	#print(load_structures('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation/structure.pkl'))
