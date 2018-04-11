@@ -142,5 +142,5 @@ class VasprunAnalyzer(object):
 		pass
 
 if __name__ == '__main__':
-	folder_ana = VaspFolderAnalyzer('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation')
+	folder_ana = VaspFolderAnalyzer('/work/05018/tg843171/stampede2/Ab/2116/solid_solution_ml/complete/', 8)
 	print(folder_ana.get_formation_energyies())
