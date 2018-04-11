@@ -1,1 +1,0 @@
-/home1/05018/tg843171/scripts/sh_script/stampede-submit/submit_skylake_single_dev_node.sh

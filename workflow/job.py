@@ -124,8 +124,8 @@ def bundle_submit_file(folder, path_of_custodian_file, n_jobs, queue='skx-normal
 				f.write('echo \"{}\" >> log_{}\n'.format(subfolders[j], i))
 
 if __name__=='__main__':
-	bundle_submit_file('/Users/yao/Google Drive/mmtools/workflow/test_data', \
-		'/Users/yao/Google Drive/mmtools/workflow/test_data/custodian_job.py', 2)
+	bundle_submit_file('/work/05018/tg843171/stampede2/Ab/2116/solid_solution_ml/run', \
+		'/work/05018/tg843171/stampede2/Ab/2116/solid_solution_ml/run/custodian_job.py', 25)
 
 
 
