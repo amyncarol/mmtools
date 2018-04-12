@@ -116,6 +116,9 @@ class VasprunAnalyzer(object):
 		pass
 
 if __name__ == '__main__':
-	folder_ana = VaspFolderAnalyzerSerial('/Users/yao/Google Drive/data/2116/solidsolution/solid_solution_ml/complete')
-	folder_ana.write_formation_energyies()
-
+	# folder_ana = VaspFolderAnalyzerSerial('/Users/yao/Google Drive/data/2116/solidsolution/solid_solution_ml/complete')
+	# folder_ana.write_formation_energyies()
+	vr = Vasprun('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation/Na2Na1Au1F6/vasprun.xml')
+	va = VasprunAnalyzer(vr)
+	energy = va.get_formation_energy()
+	print(str(energy))
