@@ -118,3 +118,4 @@ class VasprunAnalyzer(object):
 if __name__ == '__main__':
 	folder_ana = VaspFolderAnalyzerSerial('/Users/yao/Google Drive/data/2116/solidsolution/solid_solution_ml/complete')
 	folder_ana.write_formation_energyies()
+
