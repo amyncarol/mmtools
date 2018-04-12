@@ -3,66 +3,41 @@ from multiprocessing import Pool
 
 from pymatgen import MPRester
 from pymatgen.entries.compatibility import MaterialsProjectCompatibility
-from pymatgen.phasediagram.maker import PhaseDiagram
-from pymatgen.phasediagram.analyzer import PDAnalyzer
+from pymatgen.analysis.phase_diagram import PhaseDiagram
 from pymatgen.io.vasp.outputs import Vasprun
 
-class VaspFolderAnalyzer(object):
+class VaspFolderAnalyzerSerial(object):
 	"""
-	Given a folder containing subfolders of vasp results, use multithreading to analyze all subfolders
+	Given a folder containing subfolders of vasp results, analyze all subfolders
 	"""
-	def __init__(self, folder, n_threads=4):
+	def __init__(self, folder):
 		"""
 		Args:
 			folder: the parent folder that contains all subfolders
-			n_threads: the number of threads to use
 
 		Attributes:
 			subfolders: a list of subfolders
 			vasprun_paths: a list of absolute paths to the vasprun files
 		"""
-		self.n_threads = n_threads
 		self.folder = folder
 		self.subfolders = [i for i in os.listdir(self.folder) if os.path.isdir(os.path.join(self.folder, i))]
 		self.vasprun_paths = [os.path.join(os.path.join(folder, i), 'vasprun.xml') for i in self.subfolders]
 
-	def get_vaspruns(self):
-		"""
-		get the list of vasprun objects
-
-		Returns: 
-			a list of vasprun objects
-		"""
-		p = Pool(self.n_threads)
-		return p.map(Vasprun, self.vasprun_paths)
-
-	@staticmethod
-	def get_formation_energy(vasprun):
-		"""
-		wrapper
-
-		Args:
-			vasprun: a vasprun object
-
-		Returns:
-			formation energy per atom
-		"""
-		va = VasprunAnalyzer(vasprun)
-		return va.get_formation_energy()
-
-	def get_formation_energyies(self):
-		"""
-		get a list of lines which are to be writen
-		
-		Returns: 
-			a list of lines, each line is of the following format:
+	def write_formation_energyies(self, filename = 'formation_energy'):
+		"""		
+		Writes: 
+			each line is of the following format:
 				folder_name formation_energy
 		"""
-		vasprun_list = self.get_vaspruns()
-		p = Pool(self.n_threads)
-		formation_energy_list = p.map(self.get_formation_energy, vasprun_list)
-		return formation_energy_list
-	
+		with open(os.path.join(self.folder, filename), 'w') as f:
+			for (subfolder, vasprun_file) in zip(self.subfolders, self.vasprun_paths):
+				try: 
+					vasprun = Vasprun(vasprun_file)
+					energy = VasprunAnalyzer(vasprun).get_formation_energy()
+					f.write(subfolder+' '+str(energy)+'\n')
+				except:
+					print('something wrong with {}'.format(subfolder))
+
 class VasprunAnalyzer(object):
 	"""
 	analyze various materials properits from a vasprun.xml file
@@ -112,8 +87,7 @@ class VasprunAnalyzer(object):
 
 		"""
 		pd, entry = self.get_pd()
-		pda = PDAnalyzer(pd)
-		(decomp, hull) = pda.get_decomp_and_e_above_hull(entry)
+		(decomp, hull) = pd.get_decomp_and_e_above_hull(entry)
 		decomp_reduced = [compound.composition.reduced_formula for compound in decomp]
 		return decomp_reduced, hull
 
@@ -142,5 +116,5 @@ class VasprunAnalyzer(object):
 		pass
 
 if __name__ == '__main__':
-	folder_ana = VaspFolderAnalyzer('/Users/yao/Google Drive/mmtools/data/sample_vasp_calculation')
-	print(folder_ana.get_formation_energyies())
+	folder_ana = VaspFolderAnalyzerSerial('/Users/yao/Google Drive/data/2116/solidsolution/solid_solution_ml/complete')
+	folder_ana.write_formation_energyies()
