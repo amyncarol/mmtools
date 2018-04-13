@@ -39,18 +39,23 @@ def store_structures_parallel(folder, filename, n_process):
 		n_process: the number of processes
 	"""
 	vasprun_list = []
+	subfolder_list = []
 	for i, subfolder in enumerate(os.listdir(folder)):
 		vasprun_file = os.path.join(folder, subfolder+'/vasprun.xml')
 		if os.path.exists(vasprun_file):
 			vasprun_list.append(vasprun_file)
-			
+			subfolder_list.append(subfolder)
+
 	p = Pool(n_process)
 	structure_list = p.map(vasp_to_struc, vasprun_list)
 
+	structure_dict = {}
+	for subfolder, structure in zip(subfolder_list, structure_list):
+		structure_dict[subfolder] = structure
 	#print(structure_list)
 
 	with open(os.path.join(folder, filename), 'wb') as f:
-		pickle.dump(structure_list, f, -1)
+		pickle.dump(structure_dict, f, -1)
 
 	####TO DO: solving the encoding!!!!!!!! btw python2 and python3
 
@@ -60,14 +65,14 @@ def vasp_to_struc(vasprun_file):
 
 def load_structures(filepath):
 	"""
-	read the pickled structure_list in file as given by filepath
+	read the pickled structure_dict in file as given by filepath
 
 	Returns: 
-		a list of structures
+		a dict of structures with folder name as keys
 	"""
 	with open(filepath, 'rb') as f:
-		structure_list = pickle.load(f)
-	return structure_list
+		structure_dict = pickle.load(f)
+	return structure_dict
 	#print(structure_list)
 
 if __name__ == '__main__':

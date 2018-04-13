@@ -84,7 +84,7 @@ def generate_dataset(energy_file, structure_file, root_dir):
     pd.DataFrame(energies, columns=['formation_energy']).to_csv(os.path.join(root_dir, 'id_prop.csv'), header=False)
 
 if __name__=='__main__':
-    generate_dataset('/Users/yao/Google Drive/models/data/formation_energy/formation_standard', \
-        '/Users/yao/Google Drive/models/data/formation_energy/structure.pkl', \
-        '/Users/yao/Google Drive/cgcnn/data/perovksites')
+    generate_dataset('/Users/yao/Google Drive/data/2116/solidsolution/solid_solution_ml/complete/cnn_learning/formation_energy', \
+        '/Users/yao/Google Drive/data/2116/solidsolution/solid_solution_ml/complete/cnn_learning/structure.pkl', \
+        '/Users/yao/Google Drive/data/2116/solidsolution/solid_solution_ml/complete/cnn_learning')
 
