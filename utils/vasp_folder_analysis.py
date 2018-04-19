@@ -6,6 +6,7 @@ from pymatgen.entries.compatibility import MaterialsProjectCompatibility
 from pymatgen.analysis.phase_diagram import PhaseDiagram, GrandPotentialPhaseDiagram
 from pymatgen.io.vasp.outputs import Vasprun
 from pymatgen.core.periodic_table import Element
+import numpy as np
 
 class VaspFolderAnalyzerSerial(object):
     """
@@ -106,8 +107,30 @@ class VasprunAnalyzer(object):
         pd, entry, _ = self.get_pd()
         return pd.get_equilibrium_reaction_energy(entry)
 
+    def get_stable_range(self, open_el):
+    	"""
+    	Given a open element, return the chemical potential range within which this entry is stable
+
+    	Args:
+    		open_el: the open element, a pymaten Element object
+
+    	Returns: 
+    		min_chempot, max_chempot
+    	"""
+    	pd, entry, entries = self.get_pd()
+    	working_chempot = []
+    	for chempot in np.arange(-10, 0, 0.01):
+    		gcpd = GrandPotentialPhaseDiagram(entries, {open_el: chempot}, pd.elements)
+    		mp_ids = [e.entry_id for e in gcpd.stable_entries]
+    		if None in mp_ids:
+    			working_chempot.append(chempot)
+    	return working_chempot[0], working_chempot[-1]
+ 
+
     def get_pd_with_open_element(self, open_el):
         """
+        The Materials Project website method
+
         Return a list of grand canonical phase diagrams with one open element
 
         Args:
@@ -144,6 +167,8 @@ class VasprunAnalyzer(object):
 
     def get_stable_and_unstable_with_open_element(self, open_el, filename):
         """
+		The Materials Project website method
+
         given open element, print all stable and unstable phases under different chemical potentials for the open element
 
         Args:
