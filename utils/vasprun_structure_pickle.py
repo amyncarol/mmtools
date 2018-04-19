@@ -16,6 +16,7 @@ def store_structures(folder, filename):
 		filename: filename to store the pickle(in folder)
 	"""
 	structure_list = []
+	subfolder_list = 
 	for i, subfolder in enumerate(os.listdir(folder)):
 		vasprun_file = os.path.join(folder, subfolder+'/vasprun.xml')
 		if os.path.exists(vasprun_file):

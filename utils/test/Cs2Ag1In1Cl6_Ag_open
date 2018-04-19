@@ -1,0 +1,559 @@
+-------Chempot range: -2.8529478844444447 to -2.83173514, calculated at -2.842341512222222--------
+--------Stable Entries (formula, materials_id)--------
+Cs2InAgCl6, None
+In2Cl3, mp-667324
+CsAgCl2, mp-567558
+Cs2In3, mp-567752
+Cs3In2Cl9, mp-27172
+InAg3, mp-30343
+Cs, mp-1
+AgCl, mp-22922
+InCl, mp-23276
+InCl3, mp-862983
+CsCl, mp-573697
+In7Cl9, mp-28730
+In5Cl9, mp-28112
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 1.439, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-1008394, 1.439, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-570778, 1.439, [('AgCl:mp-22922', 1.0)]
+Ag2Cl3, mp-864635, 0.220, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570687, 0.023, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570858, 0.072, [('AgCl:mp-22922', 1.0)]
+In, mp-85, 0.155, [('InAg3:mp-30343', 1.0)]
+In, mp-973111, 0.163, [('InAg3:mp-30343', 1.0)]
+In4Ag9, mp-21975, 0.019, [('InAg3:mp-30343', 1.0)]
+In2Ag, mp-19974, 0.101, [('InAg3:mp-30343', 1.0)]
+InAg, mp-1009018, 0.233, [('InAg3:mp-30343', 1.0)]
+In2Ag, mp-760385, 0.280, [('InAg3:mp-30343', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-542772, 0.012, [('CsAgCl2:mp-567558', 1.0)]
+CsAgCl3, mp-28610, 0.082, [('CsAgCl2:mp-567558', 0.75), ('AgCl:mp-22922', 0.25)]
+CsIn3, mp-542339, 0.012, [('Cs2In3:mp-567752', 0.62), ('InAg3:mp-30343', 0.38)]
+
+-------Chempot range: -2.8677415958333343 to -2.8529478844444447, calculated at -2.8603447401388893--------
+--------Stable Entries (formula, materials_id)--------
+Cs2In3, mp-567752
+In7Cl9, mp-28730
+CsAgCl2, mp-567558
+CsIn3, mp-542339
+Cs2InAgCl6, None
+Cs3In2Cl9, mp-27172
+InCl, mp-23276
+InCl3, mp-862983
+CsCl, mp-573697
+AgCl, mp-22922
+InAg3, mp-30343
+In5Cl9, mp-28112
+Cs, mp-1
+In2Cl3, mp-667324
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 1.421, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-1008394, 1.421, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-570778, 1.421, [('AgCl:mp-22922', 1.0)]
+Ag2Cl3, mp-864635, 0.214, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570687, 0.023, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570858, 0.072, [('AgCl:mp-22922', 1.0)]
+In, mp-85, 0.101, [('InAg3:mp-30343', 1.0)]
+In, mp-973111, 0.109, [('InAg3:mp-30343', 1.0)]
+In4Ag9, mp-21975, 0.006, [('InAg3:mp-30343', 1.0)]
+In2Ag, mp-19974, 0.056, [('InAg3:mp-30343', 1.0)]
+InAg, mp-1009018, 0.197, [('InAg3:mp-30343', 1.0)]
+In2Ag, mp-760385, 0.235, [('InAg3:mp-30343', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-542772, 0.012, [('CsAgCl2:mp-567558', 1.0)]
+CsAgCl3, mp-28610, 0.078, [('CsAgCl2:mp-567558', 0.75), ('AgCl:mp-22922', 0.25)]
+
+-------Chempot range: -2.8890805874999996 to -2.8677415958333343, calculated at -2.878411091666667--------
+--------Stable Entries (formula, materials_id)--------
+InCl3, mp-862983
+CsIn3, mp-542339
+Cs2InAgCl6, None
+In5Cl9, mp-28112
+In7Cl9, mp-28730
+Cs3In2Cl9, mp-27172
+In4Ag9, mp-21975
+In2Cl3, mp-667324
+AgCl, mp-22922
+CsCl, mp-573697
+CsAgCl2, mp-567558
+Cs2In3, mp-567752
+Cs, mp-1
+InCl, mp-23276
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 1.403, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-1008394, 1.403, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-570778, 1.403, [('AgCl:mp-22922', 1.0)]
+Ag2Cl3, mp-864635, 0.208, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570687, 0.023, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570858, 0.072, [('AgCl:mp-22922', 1.0)]
+In, mp-85, 0.055, [('In4Ag9:mp-21975', 1.0)]
+In, mp-973111, 0.063, [('In4Ag9:mp-21975', 1.0)]
+InAg3, mp-30343, 0.008, [('In4Ag9:mp-21975', 1.0)]
+In2Ag, mp-19974, 0.019, [('In4Ag9:mp-21975', 1.0)]
+InAg, mp-1009018, 0.168, [('In4Ag9:mp-21975', 1.0)]
+In2Ag, mp-760385, 0.198, [('In4Ag9:mp-21975', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-542772, 0.012, [('CsAgCl2:mp-567558', 1.0)]
+CsAgCl3, mp-28610, 0.073, [('CsAgCl2:mp-567558', 0.75), ('AgCl:mp-22922', 0.25)]
+
+-------Chempot range: -2.9511001300000013 to -2.8890805874999996, calculated at -2.9200903587500004--------
+--------Stable Entries (formula, materials_id)--------
+InCl, mp-23276
+In2Cl3, mp-667324
+CsAgCl2, mp-567558
+CsIn3, mp-542339
+Cs2In3, mp-567752
+AgCl, mp-22922
+In2Ag, mp-19974
+Cs, mp-1
+In7Cl9, mp-28730
+CsCl, mp-573697
+Cs2InAgCl6, None
+Cs3In2Cl9, mp-27172
+InCl3, mp-862983
+In5Cl9, mp-28112
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 1.361, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-1008394, 1.361, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-570778, 1.361, [('AgCl:mp-22922', 1.0)]
+Ag2Cl3, mp-864635, 0.194, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570687, 0.023, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570858, 0.072, [('AgCl:mp-22922', 1.0)]
+In, mp-85, 0.016, [('In2Ag:mp-19974', 1.0)]
+In, mp-973111, 0.023, [('In2Ag:mp-19974', 1.0)]
+InAg3, mp-30343, 0.094, [('In2Ag:mp-19974', 1.0)]
+In4Ag9, mp-21975, 0.054, [('In2Ag:mp-19974', 1.0)]
+InAg, mp-1009018, 0.171, [('In2Ag:mp-19974', 1.0)]
+In2Ag, mp-760385, 0.179, [('In2Ag:mp-19974', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-542772, 0.012, [('CsAgCl2:mp-567558', 1.0)]
+CsAgCl3, mp-28610, 0.063, [('CsAgCl2:mp-567558', 0.75), ('AgCl:mp-22922', 0.25)]
+
+-------Chempot range: -3.1707872050000003 to -2.9511001300000013, calculated at -3.060943667500001--------
+--------Stable Entries (formula, materials_id)--------
+In2Cl3, mp-667324
+In7Cl9, mp-28730
+CsCl, mp-573697
+CsIn3, mp-542339
+AgCl, mp-22922
+Cs, mp-1
+In5Cl9, mp-28112
+CsAgCl2, mp-567558
+Cs2InAgCl6, None
+In, mp-85
+InCl, mp-23276
+Cs3In2Cl9, mp-27172
+InCl3, mp-862983
+Cs2In3, mp-567752
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 1.220, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-1008394, 1.220, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-570778, 1.220, [('AgCl:mp-22922', 1.0)]
+Ag2Cl3, mp-864635, 0.147, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570687, 0.023, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570858, 0.072, [('AgCl:mp-22922', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 0.501, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 0.356, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 0.055, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 0.296, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 0.234, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-542772, 0.012, [('CsAgCl2:mp-567558', 1.0)]
+CsAgCl3, mp-28610, 0.027, [('CsAgCl2:mp-567558', 0.75), ('AgCl:mp-22922', 0.25)]
+
+-------Chempot range: -3.297801979999993 to -3.1707872050000003, calculated at -3.234294592499997--------
+--------Stable Entries (formula, materials_id)--------
+In7Cl9, mp-28730
+In5Cl9, mp-28112
+Cs2InAgCl6, None
+In2Cl3, mp-667324
+InCl3, mp-862983
+CsCl, mp-573697
+CsIn3, mp-542339
+Cs, mp-1
+InCl, mp-23276
+Cs2In3, mp-567752
+Cs3In2Cl9, mp-27172
+In, mp-85
+CsAgCl3, mp-28610
+AgCl, mp-22922
+CsAgCl2, mp-567558
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 1.047, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-1008394, 1.047, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-570778, 1.047, [('AgCl:mp-22922', 1.0)]
+Ag2Cl3, mp-864635, 0.089, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570687, 0.023, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570858, 0.072, [('AgCl:mp-22922', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 1.021, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 0.746, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 0.142, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 0.469, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 0.321, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-542772, 0.012, [('CsAgCl2:mp-567558', 1.0)]
+
+-------Chempot range: -3.3067010749999994 to -3.297801979999993, calculated at -3.302251527499996--------
+--------Stable Entries (formula, materials_id)--------
+In5Cl9, mp-28112
+InCl3, mp-862983
+CsCl, mp-573697
+CsIn3, mp-542339
+Cs2In3, mp-567752
+Cs3In2Cl9, mp-27172
+InCl, mp-23276
+In2Cl3, mp-667324
+AgCl, mp-22922
+Cs, mp-1
+In7Cl9, mp-28730
+CsAgCl2, mp-567558
+In, mp-85
+CsAgCl3, mp-28610
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 0.979, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-1008394, 0.979, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-570778, 0.979, [('AgCl:mp-22922', 1.0)]
+Ag2Cl3, mp-864635, 0.066, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570687, 0.023, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570858, 0.072, [('AgCl:mp-22922', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 1.225, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 0.899, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 0.176, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 0.537, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 0.355, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-542772, 0.012, [('CsAgCl2:mp-567558', 1.0)]
+Cs2InAgCl6, None, 0.000, [('CsAgCl3:mp-28610', 0.22), ('Cs3In2Cl9:mp-27172', 0.78)]
+
+-------Chempot range: -3.5015332800000016 to -3.3067010749999994, calculated at -3.4041171775000008--------
+--------Stable Entries (formula, materials_id)--------
+Cs, mp-1
+CsCl, mp-573697
+InCl3, mp-862983
+CsIn3, mp-542339
+Cs3In2Cl9, mp-27172
+In, mp-85
+InCl, mp-23276
+In7Cl9, mp-28730
+In2Cl3, mp-667324
+AgCl, mp-22922
+In5Cl9, mp-28112
+Cs2In3, mp-567752
+CsAgCl3, mp-28610
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 0.877, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-1008394, 0.877, [('AgCl:mp-22922', 1.0)]
+Cl2, mp-570778, 0.877, [('AgCl:mp-22922', 1.0)]
+Ag2Cl3, mp-864635, 0.032, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570687, 0.023, [('AgCl:mp-22922', 1.0)]
+AgCl, mp-570858, 0.072, [('AgCl:mp-22922', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 1.530, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 1.128, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 0.227, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 0.639, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 0.406, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-567558, 0.016, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+CsAgCl2, mp-542772, 0.028, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+Cs2InAgCl6, None, 0.006, [('CsAgCl3:mp-28610', 0.22), ('Cs3In2Cl9:mp-27172', 0.78)]
+
+-------Chempot range: -4.198066070000001 to -3.5015332800000016, calculated at -3.8497996750000016--------
+--------Stable Entries (formula, materials_id)--------
+InCl3, mp-862983
+In7Cl9, mp-28730
+CsCl, mp-573697
+CsAgCl3, mp-28610
+Cs2In3, mp-567752
+Cs3In2Cl9, mp-27172
+Ag2Cl3, mp-864635
+InCl, mp-23276
+In5Cl9, mp-28112
+Cs, mp-1
+In2Cl3, mp-667324
+CsIn3, mp-542339
+In, mp-85
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 0.547, [('Ag2Cl3:mp-864635', 1.0)]
+Cl2, mp-1008394, 0.547, [('Ag2Cl3:mp-864635', 1.0)]
+Cl2, mp-570778, 0.547, [('Ag2Cl3:mp-864635', 1.0)]
+AgCl, mp-570687, 0.139, [('Ag2Cl3:mp-864635', 1.0)]
+AgCl, mp-22922, 0.116, [('Ag2Cl3:mp-864635', 1.0)]
+AgCl, mp-570858, 0.188, [('Ag2Cl3:mp-864635', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 2.867, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 2.131, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 0.449, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 1.085, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 0.629, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-567558, 0.091, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+CsAgCl2, mp-542772, 0.103, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+Cs2InAgCl6, None, 0.031, [('CsAgCl3:mp-28610', 0.22), ('Cs3In2Cl9:mp-27172', 0.78)]
+
+-------Chempot range: -4.670799994889999 to -4.198066070000001, calculated at -4.434433032445--------
+--------Stable Entries (formula, materials_id)--------
+InCl, mp-23276
+InCl3, mp-862983
+In7Cl9, mp-28730
+CsCl, mp-573697
+CsAgCl3, mp-28610
+CsIn3, mp-542339
+In, mp-85
+Ag2Cl3, mp-864635
+Cs, mp-1
+In2Cl3, mp-667324
+Cs2In3, mp-567752
+Cs3In2Cl9, mp-27172
+In5Cl9, mp-28112
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-22848, 0.158, [('Ag2Cl3:mp-864635', 1.0)]
+Cl2, mp-1008394, 0.158, [('Ag2Cl3:mp-864635', 1.0)]
+Cl2, mp-570778, 0.158, [('Ag2Cl3:mp-864635', 1.0)]
+AgCl, mp-570687, 0.334, [('Ag2Cl3:mp-864635', 1.0)]
+AgCl, mp-22922, 0.311, [('Ag2Cl3:mp-864635', 1.0)]
+AgCl, mp-570858, 0.383, [('Ag2Cl3:mp-864635', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 4.621, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 3.446, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 0.742, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 1.669, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 0.921, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-567558, 0.188, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+CsAgCl2, mp-542772, 0.200, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+Cs2InAgCl6, None, 0.063, [('Cs3In2Cl9:mp-27172', 0.78), ('CsAgCl3:mp-28610', 0.22)]
+
+-------Chempot range: -4.828377969853332 to -4.670799994889999, calculated at -4.749588982371666--------
+--------Stable Entries (formula, materials_id)--------
+In7Cl9, mp-28730
+CsIn3, mp-542339
+Cs3In2Cl9, mp-27172
+InCl, mp-23276
+In5Cl9, mp-28112
+InCl3, mp-862983
+In2Cl3, mp-667324
+CsCl, mp-573697
+CsAgCl3, mp-28610
+Cs2In3, mp-567752
+Cl2, mp-22848
+In, mp-85
+Cs, mp-1
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-1008394, 0.000, [('Cl2:mp-22848', 1.0)]
+Cl2, mp-570778, 0.000, [('Cl2:mp-22848', 1.0)]
+Ag2Cl3, mp-864635, 0.053, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-570687, 0.491, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-22922, 0.469, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-570858, 0.540, [('Cl2:mp-22848', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 5.567, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 4.155, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 0.899, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 1.985, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 1.079, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-567558, 0.240, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+CsAgCl2, mp-542772, 0.253, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+Cs2InAgCl6, None, 0.081, [('Cs3In2Cl9:mp-27172', 0.78), ('CsAgCl3:mp-28610', 0.22)]
+
+-------Chempot range: -5.527215511520001 to -4.828377969853332, calculated at -5.1777967406866665--------
+--------Stable Entries (formula, materials_id)--------
+CsIn3, mp-542339
+InCl, mp-23276
+In5Cl9, mp-28112
+In2Cl3, mp-667324
+InCl3, mp-862983
+CsCl, mp-573697
+CsAgCl3, mp-28610
+Cs2In3, mp-567752
+Cs3In2Cl9, mp-27172
+Cl2, mp-22848
+In, mp-85
+Cs, mp-1
+In7Cl9, mp-28730
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-1008394, 0.000, [('Cl2:mp-22848', 1.0)]
+Cl2, mp-570778, 0.000, [('Cl2:mp-22848', 1.0)]
+Ag2Cl3, mp-864635, 0.338, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-570687, 0.919, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-22922, 0.897, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-570858, 0.969, [('Cl2:mp-22848', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 6.851, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 5.119, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 1.113, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 2.413, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 1.293, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-567558, 0.312, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+CsAgCl2, mp-542772, 0.324, [('CsAgCl3:mp-28610', 0.67), ('CsCl:mp-573697', 0.33)]
+Cs2InAgCl6, None, 0.104, [('CsAgCl3:mp-28610', 0.22), ('Cs3In2Cl9:mp-27172', 0.78)]
+
+-------Chempot range: None to -5.527215511520001, calculated at -5.62721551152--------
+--------Stable Entries (formula, materials_id)--------
+InCl, mp-23276
+In2Cl3, mp-667324
+In5Cl9, mp-28112
+InCl3, mp-862983
+CsCl, mp-573697
+Cs2In3, mp-567752
+Cl2, mp-22848
+In, mp-85
+Cs, mp-1
+In7Cl9, mp-28730
+CsIn3, mp-542339
+Cs3In2Cl9, mp-27172
+---------Unstable Entries (formula, materials_id, e_above_hull (eV/atom), decomposes_to)--------
+Cl2, mp-1008394, 0.000, [('Cl2:mp-22848', 1.0)]
+Cl2, mp-570778, 0.000, [('Cl2:mp-22848', 1.0)]
+Ag2Cl3, mp-864635, 0.638, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-570687, 1.369, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-22922, 1.346, [('Cl2:mp-22848', 1.0)]
+AgCl, mp-570858, 1.418, [('Cl2:mp-22848', 1.0)]
+In, mp-973111, 0.008, [('In:mp-85', 1.0)]
+InAg3, mp-30343, 8.199, [('In:mp-85', 1.0)]
+In4Ag9, mp-21975, 6.130, [('In:mp-85', 1.0)]
+In2Ag, mp-19974, 1.338, [('In:mp-85', 1.0)]
+InAg, mp-1009018, 2.862, [('In:mp-85', 1.0)]
+In2Ag, mp-760385, 1.517, [('In:mp-85', 1.0)]
+InCl, mp-571555, 0.002, [('InCl:mp-23276', 1.0)]
+InCl, mp-571636, 0.002, [('InCl:mp-23276', 1.0)]
+Cs, mp-1007976, 0.010, [('Cs:mp-1', 1.0)]
+Cs, mp-573579, 0.016, [('Cs:mp-1', 1.0)]
+Cs, mp-3, 0.055, [('Cs:mp-1', 1.0)]
+Cs, mp-949029, 0.011, [('Cs:mp-1', 1.0)]
+Cs, mp-1012110, 0.006, [('Cs:mp-1', 1.0)]
+Cs, mp-11832, 0.003, [('Cs:mp-1', 1.0)]
+Cs, mp-639727, 0.002, [('Cs:mp-1', 1.0)]
+Cs, mp-672241, 0.026, [('Cs:mp-1', 1.0)]
+CsCl, mp-22865, 0.048, [('CsCl:mp-573697', 1.0)]
+CsAgCl2, mp-567558, 0.403, [('CsCl:mp-573697', 0.67), ('Cl2:mp-22848', 0.33)]
+CsAgCl2, mp-542772, 0.416, [('CsCl:mp-573697', 0.67), ('Cl2:mp-22848', 0.33)]
+CsAgCl3, mp-28610, 0.025, [('CsCl:mp-573697', 0.5), ('Cl2:mp-22848', 0.5)]
+Cs2InAgCl6, None, 0.135, [('Cs3In2Cl9:mp-27172', 0.78), ('CsCl:mp-573697', 0.11), ('Cl2:mp-22848', 0.11)]
+
