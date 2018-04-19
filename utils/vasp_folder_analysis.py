@@ -93,6 +93,19 @@ class VasprunAnalyzer(object):
         decomp_reduced = [compound.composition.reduced_formula for compound in decomp]
         return decomp_reduced, hull
 
+    def get_equilibrium_reaction_energy(self):
+        """
+        Provides the reaction energy of this entry from the neighboring
+        equilibrium stable entries (also known as the inverse distance to
+        hull).
+
+        Returns:
+            Equilibrium reaction energy of entry(eV/atom). Stable entries should have
+            equilibrium reaction energy <= 0.
+        """
+        pd, entry, _ = self.get_pd()
+        return pd.get_equilibrium_reaction_energy(entry)
+
     def get_pd_with_open_element(self, open_el):
         """
         Return a list of grand canonical phase diagrams with one open element

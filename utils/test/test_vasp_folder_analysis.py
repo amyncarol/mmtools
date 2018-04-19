@@ -8,7 +8,7 @@ from vasp_folder_analysis import VasprunAnalyzer
 
 class TestVasprunAnalyzer(unittest.TestCase):
     def setUp(self):
-        self.vr = Vasprun('/Users/yao/Google Drive/data/2116/solidsolution/Cs2Ag1Bi1Cl6/vasprun.xml')
+        self.vr = Vasprun('/Users/yao/Google Drive/data/2116/solidsolution/Cs2Ag1In1Cl6/vasprun.xml')
         self.va = VasprunAnalyzer(self.vr)
 
     def test_get_pd_with_open_element(self):
@@ -19,13 +19,15 @@ class TestVasprunAnalyzer(unittest.TestCase):
         pass
 
     def test_get_stable_and_unstable_with_open_element(self):
-        self.va.get_stable_and_unstable_with_open_element(Element('Ag'), 'Cs2Ag1Bi1Cl6_Ag_open')
-        #pass
+        #self.va.get_stable_and_unstable_with_open_element(Element('Ag'), 'Cs2Ag1Bi1Cl6_Ag_open')
+        pass
 
     def test_get_chempot_range(self):
         #print(self.va.get_chempot_range(Element('Ag')))
         pass
 
+    def test_get_equilibrium_reaction_energy(self):
+        print(self.va.get_equilibrium_reaction_energy())
 
 
 if __name__ == '__main__':
