@@ -47,10 +47,15 @@ class IonVacuumFileWriter(object):
         species.append(sites[self.center_index-1].specie)
 
         ##the neighboring atoms
+        translation_vectors = []
+        for a in [-lattice_matrix[0, :], np.zeros(3), lattice_matrix[0, :]]:
+        	for b in [-lattice_matrix[1, :], np.zeros(3), lattice_matrix[1, :]]:
+        		for c in [-lattice_matrix[2, :], np.zeros(3), lattice_matrix[2, :]]:
+        			translation_vectors.append(a+b+c)
+ 
         if self.neighboring_index != None:
             for index in self.neighboring_index:
-                for vector in [np.zeros(3), lattice_matrix[0, :], -lattice_matrix[0, :], \
-                        lattice_matrix[1, :], -lattice_matrix[1, :], lattice_matrix[2, :], -lattice_matrix[2, :]]:
+                for vector in translation_vectors:
                         translated_coords = sites[index-1].coords+vector
                         if norm(translated_coords-center_coords) < self.max_distance:
                             cart_coords.append(translated_coords)
@@ -68,7 +73,7 @@ class IonVacuumFileWriter(object):
         ##neutral 
         mpset_neutral = MPRelaxSet(self.struc2, user_incar_settings={'EDIFF': 1e-5, 'EDIFFG': -0.01, 'ALGO': 'F', 'ISMEAR': 0, \
             'ISIF': 2})
-        if neutral:
+        if neutral or self.charge == 0:
             mpset_neutral.write_input(wd)
         else:
             ##charged
@@ -97,33 +102,31 @@ if __name__ == '__main__':
     # neighboring_index = [9, 15, 18]
     # charge = -1
 
-    ##Cs
-    # POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/mp-567629_CsPbBr3/POSCAR.vasp'
-    # wd = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs_ion'
-    # wd_neutral = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs_neutral'
-    # center_index = 1
-    # neighboring_index = None
-    # charge = 1
+    ##BiCl3
+    # POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1Bi1Cl6/POSCAR'
+    # wd = '/Users/yao/Google Drive/data/lattice_energy_testset/BiCl3_ion'
+    # center_index = 4
+    # neighboring_index = [6, 7, 8]
+    # charge = 0
 
-    ##Na
-    # POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/mp-22862_NaCl/POSCAR'
-    # wd = '/Users/yao/Google Drive/data/lattice_energy_testset/Na_ion'
-    # wd_neutral = '/Users/yao/Google Drive/data/lattice_energy_testset/Na_neutral'
-    # center_index = 1
-    # neighboring_index = None
-    # charge = 1
+    ##BiCl4
+    # POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1Bi1Cl6/POSCAR'
+    # wd = '/Users/yao/Google Drive/data/lattice_energy_testset/BiCl4_ion'
+    # center_index = 4
+    # neighboring_index = [5, 6, 7, 8]
+    # charge = -1
 
-    ##Cl 
-    POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/mp-22862_NaCl/POSCAR'
-    wd = '/Users/yao/Google Drive/data/lattice_energy_testset/Cl_ion'
-    wd_neutral = '/Users/yao/Google Drive/data/lattice_energy_testset/Cl_neutral'
-    center_index = 5
-    neighboring_index = None
-    charge = -1
+    # ##BiCl5
+    POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1Bi1Cl6/POSCAR'
+    wd = '/Users/yao/Google Drive/data/lattice_energy_testset/BiCl5_ion'
+    center_index = 4
+    neighboring_index = [5, 6, 7, 8, 9]
+    charge = -2
+
 
     poscar = Poscar.from_file(POSCAR_input)
     struc = poscar.structure
     filewriter = IonVacuumFileWriter(struc1=struc, center_index=center_index, neighboring_index=neighboring_index, charge=charge)
-    filewriter.write_vasp_files(wd = wd_neutral, neutral=True)
+    filewriter.write_vasp_files(wd = wd, neutral=False)
 
 
