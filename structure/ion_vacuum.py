@@ -102,26 +102,26 @@ if __name__ == '__main__':
     # neighboring_index = [9, 15, 18]
     # charge = -1
 
-    ##BiCl3
-    # POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1Bi1Cl6/POSCAR'
-    # wd = '/Users/yao/Google Drive/data/lattice_energy_testset/BiCl3_ion'
-    # center_index = 4
-    # neighboring_index = [6, 7, 8]
-    # charge = 0
+    ##InCl3
+    POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1In1Cl6/POSCAR'
+    wd = '/Users/yao/Google Drive/data/lattice_energy_testset/InCl3_ion'
+    center_index = 3
+    neighboring_index = [6, 7, 8]
+    charge = 0
 
-    ##BiCl4
-    # POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1Bi1Cl6/POSCAR'
-    # wd = '/Users/yao/Google Drive/data/lattice_energy_testset/BiCl4_ion'
-    # center_index = 4
+    ##InCl4
+    # POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1In1Cl6/POSCAR'
+    # wd = '/Users/yao/Google Drive/data/lattice_energy_testset/InCl4_ion'
+    # center_index = 3
     # neighboring_index = [5, 6, 7, 8]
     # charge = -1
 
-    # ##BiCl5
-    POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1Bi1Cl6/POSCAR'
-    wd = '/Users/yao/Google Drive/data/lattice_energy_testset/BiCl5_ion'
-    center_index = 4
-    neighboring_index = [5, 6, 7, 8, 9]
-    charge = -2
+    # ##InCl5
+    # POSCAR_input = '/Users/yao/Google Drive/data/lattice_energy_testset/Cs2Ag1In1Cl6/POSCAR'
+    # wd = '/Users/yao/Google Drive/data/lattice_energy_testset/InCl5_ion'
+    # center_index = 3
+    # neighboring_index = [5, 6, 7, 8, 9]
+    # charge = -2
 
 
     poscar = Poscar.from_file(POSCAR_input)
