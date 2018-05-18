@@ -32,12 +32,14 @@ class ColorVonoroi(object):
         self.expanded_structure = ColorVonoroi.expand_structure(self.structure)
         self.cart_coords = [site.coords for site in self.expanded_structure]
 
-        self.elements = [i.symbol for i in set(self.structure.species)]
-        self.color = ['r', 'g', 'b', 'c', 'y']
+        elements = list(set(self.structure.species))
+        self.elements = [i.symbol for i in elements]
+        electronegativity = [i.X for i in elements]
+        self.elements = [x for _, x in sorted(zip(electronegativity, self.elements), reverse=True)]
+        self.color = [(1, 0, 0), (1, 1, 0), (0, 1, 0), (0, 1, 1), (0, 0, 1)]
         self.color_dict = {}
         for i, e in enumerate(self.elements):
             self.color_dict[e] = self.color[i]
-        print(self.color_dict)
 
         self.vor = Voronoi(self.cart_coords)
 
@@ -141,13 +143,62 @@ class ColorVonoroi(object):
 
         return hull.find_simplex(p)>=0
 
-    #################Plotting#####################################################################
+    def _get_x_y_z_triangle(self, isite):
+        """
+        get x, y, z and triangle to plot triangle mesh (to plot using mayavi)
+
+        Returns:
+            x: list of the x coords of vertices
+            y: list of the y coords of vertices
+            z: list of the z coords of vertices
+            triangle: list of tuples (_, _, _) which indicates indices of vertices of triangle
+        """
+        ridge_points = self.vor.ridge_points
+        ridge_vertices = self.vor.ridge_vertices
+        ridge_index = []
+        ridge_shape = []
+        for i in range(len(ridge_points)):
+            if isite in ridge_points[i]:
+                ridge_index.append(i)
+
+        triangle = {e:[] for e in self.elements}
+        for i in ridge_index:
+            other_point_index = [p for p in ridge_points[i] if p not in [isite]][0]
+            other_element_symbol = self.expanded_structure.sites[other_point_index].specie.symbol
+            vertices_index = [j for j in ridge_vertices[i]]
+            polyn = len(vertices_index)
+            for (p, q) in zip(range(1, polyn-1), range(2, polyn)):
+               triangle[other_element_symbol].append((vertices_index[0], vertices_index[p], vertices_index[q]))
+            #triangle[other_element_symbol].append((vertices_index[0], vertices_index[1], vertices_index[2]))
+        x, y, z = self.vor.vertices[:, 0], self.vor.vertices[:, 1], self.vor.vertices[:, 2]
+        return x, y, z, triangle
+
+    @staticmethod
+    def cut_large_number(x):
+        return (abs(x)<1e6) * x + (x>=1e6) * 1e6 + (x<=-1e6) * (-1e6)
+
     def plot_polyhedra(self, isite):
         """
-        plot the voronoi polyhedra for isite
+        plot the voronoi polyhedra for isite using mayavi
         """
+        _, vol, area = self.get_polyhedron_hull_volume_area(isite)
+
+        x, y, z, triangle = self._get_x_y_z_triangle(isite)
+
+        ##overflow here, mayavi cannot handle, manually cut the large number to 1e6
+        x = ColorVonoroi.cut_large_number(x)
+        y = ColorVonoroi.cut_large_number(y)
+        z = ColorVonoroi.cut_large_number(z)
         
-        triangular_mesh(x, y, z, triangles)
+        i = 0.05
+        for e in triangle:
+            if triangle[e]:
+                triangular_mesh(x, y, z, triangle[e], color=self.color_dict[e])
+                text(0.05, i, e, color=self.color_dict[e], width=0.08)
+                i+=0.12
+        title('isite: {}, center atom: {}'.format(isite, self.expanded_structure[isite].specie.symbol))
+        text(0.3, 0.05, 'volume:{}, \n area:{}'.format(vol, area), width=0.4)
+        show()
 
     
 if __name__ == '__main__':
