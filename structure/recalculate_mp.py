@@ -69,8 +69,8 @@ if __name__=='__main__':
     # poscar_input = "/Users/yao/Google Drive/data/lattice_energy_testset/mp-22865_CsCl/POSCAR"
     # wd = "/Users/yao/Google Drive/data/lattice_energy_testset/mp-22865_CsCl_recal"
 
-    poscar_input = "/Users/yao/Google Drive/data/lattice_energy_testset/mp-567629_CsPbBr3/POSCAR"
-    wd = "/Users/yao/Google Drive/data/lattice_energy_testset/mp-567629_CsPbBr3_recal"
+    poscar_input = "/Users/yao/Google Drive/data/phonopy/NaCl/NaCl-vasp-dfpt-exercise/POSCAR"
+    wd = "/Users/yao/Google Drive/data/phonopy/NaCl/NaCl-vasp-dfpt-exercise"
 
     struc = Poscar.from_file(poscar_input).structure
     filewriter = RecalculateMPFileWriter(struc, wd)

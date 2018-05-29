@@ -71,7 +71,7 @@ class RandomOrientFileWriter(object):
 						
 	def write_vasp_files(self):
 		struc = self.generate_structure()
-		mpset = MPRelaxSet(struc, user_incar_settings={'EDIFF': 1e-5, 'EDIFFG': -0.01, 'ALGO': 'F', 'ISMEAR': 0}, \
+		mpset = MPRelaxSet(struc, user_incar_settings={'GGA': 'PS', 'EDIFF': 1e-5, 'EDIFFG': -0.01, 'ALGO': 'F', 'ISMEAR': 0}, \
             user_kpoints_settings={'reciprocal_density': 100}, force_gamma=True)
 		mpset.write_input(self.wd)
 
