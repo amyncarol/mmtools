@@ -1,4 +1,4 @@
-def scatter_hist(x, y, z, x_label, y_label, z_label):
+def scatter_hist(x, y, z, x_label, y_label, z_label, x_binsize=0.5, y_binsize=0.5):
     """
     Plot scatter plot x vs y and also histograms for x and y, respectively. 
     Also shows the values of z as colors of the scatter points.
@@ -6,6 +6,7 @@ def scatter_hist(x, y, z, x_label, y_label, z_label):
     Args:
     x, y, z: data
     x_label, y_label, z_label: labels
+    x_binsize, y_binsize: the size of each bin 
 
     Returns:
     the figure
@@ -15,6 +16,7 @@ def scatter_hist(x, y, z, x_label, y_label, z_label):
     import matplotlib as mpl
     import matplotlib.pyplot as plt
     import numpy as np
+    from math import ceil
     
     # definitions for the axes
     left, width = 0.1, 0.65
@@ -43,16 +45,14 @@ def scatter_hist(x, y, z, x_label, y_label, z_label):
     cmap = mpl.cm.ScalarMappable(norm=norm, cmap='gist_rainbow')
     cmap.set_array([])
     cbaxes = inset_axes(axScatter, width="30%", height="3%", loc=1)
-    cbar = plt.colorbar(cmap, cax=cbaxes, ticks=np.arange(0, max(z), 0.5), orientation='horizontal')
+    cbar = plt.colorbar(cmap, cax=cbaxes, ticks=np.arange(0, max(z), int(ceil(max(z)/4))), orientation='horizontal')
     cbar.set_label(z_label)
     
     # histograms
-    binwidth = 0.5
-    xymax = max(np.max(np.abs(x)), np.max(np.abs(y)))
-    lim = (int(xymax/binwidth) + 1) * binwidth
-    bins = np.arange(-lim, lim + binwidth, binwidth)
-    axHistx.hist(x, bins=bins, alpha=0.5)
-    axHisty.hist(y, bins=bins, orientation='horizontal', alpha=0.5)
+    binsx = np.arange(min(x), max(x)+0.1, x_binsize)
+    binsy = np.arange(min(y), max(y)+0.1, y_binsize)
+    axHistx.hist(x, bins=binsx, alpha=0.5)
+    axHisty.hist(y, bins=binsy, orientation='horizontal', alpha=0.5)
     axHistx.set_xlim(axScatter.get_xlim())
     axHisty.set_ylim(axScatter.get_ylim())
     axHistx.set_ylabel('Count')
