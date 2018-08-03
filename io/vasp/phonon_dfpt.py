@@ -1,8 +1,10 @@
 import re
 import numpy as np
 from numpy.linalg import norm
+from numpy import (array, dot, arccos, clip)
 from pymatgen.io.vasp.inputs import Poscar
 import copy
+from math import pi
 def get_eigenvalue_eigenvector(outcar_file):
 	"""
 	return a list of eigenvalues and eigenvector of vasp dfpt phonon calculation
@@ -39,26 +41,34 @@ def get_eigenvalue_eigenvector(outcar_file):
 				eigenvectors.append(eigenvector)
 	return eigenvalues, eigenvectors
 
-def which_q_point(supercell, eigenvector, scaling_matrix):
+def which_quasi_q_point(perfect_supercell, eigenvector, scaling_matrix):
 	"""
-	given a eigenvector and the supercell, judge which q point is this eigenvector
-
-	scaling_matrix: i.e.[2, 2, 2]
+	given a eigenvector (for the distorted supercell) and the perfect supercell structure, 
+	 judge which q point is this eigenvector
 
 	Warning: this is not perfect, this is a special case for [2, 2, 2]
 	"""
+
 	n = scaling_matrix[0]*scaling_matrix[1]*scaling_matrix[2] ##the number of unit cells
-	atom_set = supercell.sites[:n] ##assume the first n atoms are in different unit cells
+	atom_set = perfect_supercell.sites[:n] ##assume the first n atoms are in different unit cells
 	relative_position = []
 	for atom in atom_set:
 		relative_position.append(atom.frac_coords-atom_set[0].frac_coords)
 
 	q_point = np.zeros(3)
 	for i in range(n):
-		if (np.abs(eigenvector[i]+eigenvector[0])<1e-4).all() and abs(np.sum(relative_position[i])-0.5)<1e-4:
+		angle = angle_between_vector(eigenvector[i], eigenvector[0])
+		if not(abs(angle) < 1e-4 or abs(angle-pi) < 1e-4):
+			print(angle)
+		if angle>pi/2 and abs(np.sum(relative_position[i])-0.5)<1e-4:
 			q_point += relative_position[i]
+
 	return q_point
 
+def angle_between_vector(v1, v2):
+	value = dot(v1, v2)/norm(v1)/norm(v2)
+	return arccos(clip(value, -1, 1))
+	
 def convert_to_label(q_point):
 	if abs(np.sum(q_point)-0)<1e-4:
 		return 'G'
@@ -108,41 +118,15 @@ def generate_distortion(supercell, eigenvector):
 	print('the normal mode coords is {}, not sure if this is right though...'.format(normal_mode_coords))
 	return new_cell
 
-
 	
 if __name__ == '__main__':
 	outcar_file = '/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps/OUTCAR'
 	eigenvalues, eigenvectors = get_eigenvalue_eigenvector(outcar_file)
 	supercell = Poscar.from_file('/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps/POSCAR').structure
 
-	## the phonon modes summary
-	# G = []
-	# M = []
-	# X = []
-	# R = []
-	# for i in range(100):
-	# 	q_point = which_q_point(supercell, eigenvectors[-i-1], [2, 2, 2])
-	# 	q_label = convert_to_label(q_point)
-	# 	if q_label == 'G':
-	# 		G.append(eigenvalues[-i-1])
-	# 	elif q_label == 'M':
-	# 		M.append(eigenvalues[-i-1])
-	# 	elif q_label == 'X':
-	# 		X.append(eigenvalues[-i-1])
-	# 	elif q_label == 'R':
-	# 		R.append(eigenvalues[-i-1])	
-		
-	# print('G:')	
-	# print(G)
-	# print('M:')	
-	# print(M)
-	# print('X:')	
-	# print(X)
-	# print('R:')	
-	# print(R)
-
-	distorted_cell = generate_distortion(supercell, eigenvectors[-1])
-	Poscar(distorted_cell).write_file('/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps-distorted-RTA1/POSCAR')
+	##generate the distorted cell
+	#distorted_cell = generate_distortion(supercell, eigenvectors[-1])
+	#Poscar(distorted_cell).write_file('/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps-distorted-RTA1/POSCAR')
 
 
 		

@@ -3,6 +3,7 @@ from pymatgen.io.vasp.inputs import Poscar
 from pymatgen.io.vasp.sets import MPRelaxSet, MPHSERelaxSet, MPStaticSet
 from recalculate_mp import FileWriter
 from pymatgen.io.xyz import XYZ
+import glob
 
 class MoleculeVacuumFileWriter(FileWriter):
     """
@@ -25,7 +26,7 @@ class MoleculeVacuumFileWriter(FileWriter):
         Writes:
             a folder that includes vasp input file for a single structure, this is for relaxation
         """
-        mpset = MPRelaxSet(self.out_struc, user_incar_settings={'EDIFF': 1e-5, 'EDIFFG': -0.01, 'ALGO': 'F', 'ISMEAR': 0, 'ISIF': 2}, \
+        mpset = MPRelaxSet(self.out_struc, user_incar_settings={'EDIFF': 1e-5, 'EDIFFG': 0.001, 'ALGO': 'F', 'ISMEAR': 0, 'ISIF': 2, 'IBRION': 2, 'NSW': 500}, \
             user_kpoints_settings={'reciprocal_density': 1})
         mpset.write_input(self.wd)
 
@@ -44,10 +45,10 @@ def xyz2struc(xyz_file):
     return XYZ.from_file(xyz_file).molecule
 
 if __name__=='__main__':
-    xyz_file = '/Users/yao/Google Drive/data/2116/solidsolution/structures_exp_guess/modfiles/BiCl3Amine3.xyz'
-    wd = '/Users/yao/Google Drive/data/2116/solidsolution/structures_exp_guess/modfiles/BiCl3Amine3'
-    for cube_length in [15, 20, 25]:
-        writer = MoleculeVacuumFileWriter(xyz2struc(xyz_file), wd+'/cube'+str(cube_length), cube_length)
-        writer.write_vasp_files_static()
+    folder = '/Users/yao/Google Drive/data/2116/solidsolution/structures_exp_guess/modfiles'
+    xyz_list = glob.glob(folder+'/*.xyz')
+    for xyz in xyz_list:
+        writer = MoleculeVacuumFileWriter(xyz2struc(xyz), xyz[:-4], 15)
+        writer.write_vasp_files()
     
 
