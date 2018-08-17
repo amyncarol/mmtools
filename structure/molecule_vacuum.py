@@ -45,10 +45,10 @@ def xyz2struc(xyz_file):
     return XYZ.from_file(xyz_file).molecule
 
 if __name__=='__main__':
-    folder = '/Users/yao/Google Drive/data/2116/solidsolution/structures_exp_guess/modfiles'
+    folder = '/Users/yao/Google Drive/data/2116/solidsolution/structures_exp_guess/new_modfiles'
     xyz_list = glob.glob(folder+'/*.xyz')
     for xyz in xyz_list:
-        writer = MoleculeVacuumFileWriter(xyz2struc(xyz), xyz[:-4], 15)
+        writer = MoleculeVacuumFileWriter(xyz2struc(xyz), xyz[:-4], 20)
         writer.write_vasp_files()
     
 
