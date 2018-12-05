@@ -141,8 +141,8 @@ class PhononFileWriter(object):
 
 
 if __name__ == '__main__':
-    ## 0) inputs 
-    phonon_path = '/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/'
+    ## 0) inputs
+    phonon_path = '/Users/yao/Google Drive/data/113/MAPbI3/phonon/deutoration/'
     dfpt_folder = 'dfpt-ps'
     poscar_file = os.path.join(phonon_path, 'POSCAR-starting')  ##before relax
     dfpt_incar = os.path.join(phonon_path, 'INCAR-dfpt') #INCAR for dfpt calculation
@@ -156,19 +156,19 @@ if __name__ == '__main__':
     #ph.write_vasp_files_relax(relax_incar)
 
     ## 2) prepare dfpt vasp files
-    #ph.write_vasp_files_dfpt(dfpt_incar)
+    ph.write_vasp_files_dfpt(dfpt_incar)
 
     # 3) create force constant
-    p = subprocess.Popen(['phonopy', '--fc', 'vasprun.xml'], cwd=os.path.join(phonon_path, dfpt_folder))
-    p.wait()
+    # p = subprocess.Popen(['phonopy', '--fc', 'vasprun.xml'], cwd=os.path.join(phonon_path, dfpt_folder))
+    # p.wait()
 
     # 4) prepare band.conf
-    ph.write_band_conf()
+    # ph.write_band_conf()
 
     # 5) calculate bands 
-    p = subprocess.Popen(['phonopy', '-c', contcar_file, 'band.conf'], cwd=os.path.join(phonon_path, dfpt_folder))
-    p.wait()
+    # p = subprocess.Popen(['phonopy', '-c', contcar_file, 'band.conf'], cwd=os.path.join(phonon_path, dfpt_folder))
+    # p.wait()
 
     # 6) plot bands
-    ph.plot_phonon_bands(ylim=[-2, 7], units='mev')
+    # ph.plot_phonon_bands(ylim=[-2, 7], units='mev')
     #ph.plot_phonon_bands(filename=os.path.join(phonon_path, dfpt_folder+'/1.eps'))

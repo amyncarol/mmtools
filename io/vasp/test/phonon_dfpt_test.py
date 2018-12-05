@@ -24,6 +24,10 @@ class TestPhononDfpt(unittest.TestCase):
 		self.assertAlmostEqual(angle_between_vector(v1, v2), 0)
 
 	def test_which_q_point_perfect_supercell(self):
+		"""
+		test with the perfect cell
+		"""
+		print('test perfect cell')
 		outcar_file = '/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps/OUTCAR'
 		eigenvalues, eigenvectors = get_eigenvalue_eigenvector(outcar_file)
 		supercell = Poscar.from_file('/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps/POSCAR').structure
@@ -66,51 +70,94 @@ class TestPhononDfpt(unittest.TestCase):
 		assert_equal(np.array(X_index), np.array([281, 278, 277, 276, 274, 273, 272, 271, 270]))
 		assert_equal(np.array(R_index), np.array([288, 286]))
 
-	def test_which_q_point_distorted_supercell(self):
-		outcar_file = '/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/RTA1-dfpt-ps/smear0_07_expansion1_4/OUTCAR'
-		eigenvalues, eigenvectors = get_eigenvalue_eigenvector(outcar_file)
-		supercell = Poscar.from_file('/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps/POSCAR').structure
+	# def test_which_q_point_distorted_supercell(self):
+	# 	"""
+	# 	test with the distorted cell, the problem in this case is not clearly defined
+	# 	"""
+	# 	print('test distorted cell')
+	# 	outcar_file = '/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/RTA1-dfpt-ps/smear0_07_expansion1_4/OUTCAR'
+	# 	eigenvalues, eigenvectors = get_eigenvalue_eigenvector(outcar_file)
+	# 	supercell = Poscar.from_file('/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps/POSCAR').structure
 
-		# the phonon modes summary
-		G = []
-		M = []
-		X = []
-		R = []
+	# 	# the phonon modes summary
+	# 	G = []
+	# 	M = []
+	# 	X = []
+	# 	R = []
 
-		## index starts from 1
-		G_index = []
-		M_index = []
-		X_index = []
-		R_index = []
+	# 	## index starts from 1
+	# 	G_index = []
+	# 	M_index = []
+	# 	X_index = []
+	# 	R_index = []
 
-		for i in range(100):
-			q_point = which_quasi_q_point(supercell, eigenvectors[-i-1], [2, 2, 2])
-			q_label = convert_to_label(q_point)
-			if q_label == 'G':
-				G.append(eigenvalues[-i-1])
-				G_index.append(len(eigenvectors)-i)
-			elif q_label == 'M':
-				M.append(eigenvalues[-i-1])
-				M_index.append(len(eigenvectors)-i)
-			elif q_label == 'X':
-				X.append(eigenvalues[-i-1])
-				X_index.append(len(eigenvectors)-i)
-			elif q_label == 'R':
-				R.append(eigenvalues[-i-1])
-				R_index.append(len(eigenvectors)-i)
+	# 	for i in range(100):
+	# 		q_point = which_quasi_q_point(supercell, eigenvectors[-i-1], [2, 2, 2])
+	# 		q_label = convert_to_label(q_point)
+	# 		if q_label == 'G':
+	# 			G.append(eigenvalues[-i-1])
+	# 			G_index.append(len(eigenvectors)-i)
+	# 		elif q_label == 'M':
+	# 			M.append(eigenvalues[-i-1])
+	# 			M_index.append(len(eigenvectors)-i)
+	# 		elif q_label == 'X':
+	# 			X.append(eigenvalues[-i-1])
+	# 			X_index.append(len(eigenvectors)-i)
+	# 		elif q_label == 'R':
+	# 			R.append(eigenvalues[-i-1])
+	# 			R_index.append(len(eigenvectors)-i)
 
-		print('G:')
-		print(G)
-		#print(G_index)
-		print('M:')
-		print(M)
-		#print(M_index)
-		print('X:')
-		print(X)
-		#print(X_index)
-		print('R:')
-		print(R)
-		#print(R_index)
+	# 	print('G:')
+	# 	print(G)
+	# 	#print(G_index)
+	# 	print('M:')
+	# 	print(M)
+	# 	#print(M_index)
+	# 	print('X:')
+	# 	print(X)
+	# 	#print(X_index)
+	# 	print('R:')
+	# 	print(R)
+	# 	#print(R_index)
+
+	#this is not right!!!
+	# def test_is_transverse(self):
+	# 	outcar_file = '/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps/OUTCAR'
+	# 	eigenvalues, eigenvectors = get_eigenvalue_eigenvector(outcar_file)
+	# 	supercell = Poscar.from_file('/Users/yao/Google Drive/data/113/MAPbI3/phonon/1st_try/dfpt-ps/POSCAR').structure
+
+	# 	# the phonon modes summary
+	# 	G = []
+	# 	M = []
+	# 	X = []
+	# 	R = []
+
+	# 	for i in range(20):
+	# 		q_point = which_quasi_q_point(supercell, eigenvectors[-i-1], [2, 2, 2])
+	# 		q_label = convert_to_label(q_point)
+	# 		trans = is_transverse(supercell, eigenvectors[-i-1], q_point)
+	# 		if q_label == 'G':
+	# 			G.append(trans)
+	# 		elif q_label == 'M':
+	# 			M.append(trans)
+	# 		elif q_label == 'X':
+	# 			X.append(trans)
+	# 		elif q_label == 'R':
+	# 			R.append(trans)
+
+	# 	print('G:')
+	# 	print(G)
+
+	# 	print('M:')
+	# 	print(M)
+
+	# 	print('X:')
+	# 	print(X)
+
+	# 	print('R:')
+	# 	print(R)
+
+
 
 
 if __name__ == '__main__':

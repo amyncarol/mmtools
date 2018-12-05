@@ -12,11 +12,14 @@ class VasprunAnalysis():
     Includes:
         phase diagram analysis, energy above hull, formation energy.....
 
+        Band gap....
+
         will add more functionality in the future
     """
-    def __init__(self, vasprun_file):
+    def __init__(self, vasprun_file, cal_pd = False):
         self.vasprun = Vasprun(vasprun_file)
-        self.pd, self.entry = self.get_pd()
+        if cal_pd:
+            self.pd, self.entry = self.get_pd()
 
     def get_pd(self):
         """
@@ -85,10 +88,49 @@ class VasprunAnalysis():
         decomp = [compound.composition.reduced_formula for compound in decomp]
         return (decomp, hull)
 
+    def get_eg(self):
+        """
+        return the band gap(by me), band gap(by pymatgen) and direct band gap
+
+        two ways of calculating band gap to test the correctness of pymatgen algorithm
+
+        Returns:
+            eg1: band gap calculated by me
+            eg2: band gap calculated by pymatgen algorithm
+            eg_direct: direct band gap
+        """
+        eg1 = self.vasprun.eigenvalue_band_properties[0]
+        efermi = self.vasprun.efermi
+        vbm = self.vasprun.eigenvalue_band_properties[2]
+
+        eig = [self.vasprun.eigenvalues[i] for i in self.vasprun.eigenvalues]
+        occu = [i.tolist() for i in eig]
+        occu_flat = [i[1] for sublist in occu for subsublist in sublist for i in subsublist]
+        occu_set = set(occu_flat)
+        
+        if efermi < vbm:
+            eg1 = 0
+        elif len(occu_set) > 2:
+            eg1 = 0
+
+        bs = self.vasprun.get_band_structure()
+        eg2 = bs.get_band_gap()['energy']
+        eg_direct = bs.get_direct_band_gap()
+
+        print('eg1 = {}, eg2 = {}, eg_direct = {}'.format(eg1, eg2, eg_direct))
+        print('check if eg1 = eg2, it should')
+
+        return eg1, eg2, eg_direct
+
 
 if __name__=='__main__':
-    vasprun_file = '/Users/yao/Google Drive/data/2116/solidsolution/Cs2Ag1In1Cl6/vasprun.xml'
+    # vasprun_file = '/Users/yao/Google Drive/data/2116/solidsolution/Cs2Ag1In1Cl6/vasprun.xml'
+    # va = VasprunAnalysis(vasprun_file, cal_pd = True)
+    # print(va.get_equilibrium_reaction_energy())
+
+    #test get_eg
+    vasprun_file = '/Users/yao/Google Drive/data/2116/HSE_SOC/Cs2In1In1Cl6/vasprun.xml'
     va = VasprunAnalysis(vasprun_file)
-    print(va.get_equilibrium_reaction_energy())
+    print(va.get_eg())
 
 
