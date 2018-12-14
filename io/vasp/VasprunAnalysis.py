@@ -119,6 +119,7 @@ class VasprunAnalysis():
 
         print('eg1 = {}, eg2 = {}, eg_direct = {}'.format(eg1, eg2, eg_direct))
         print('check if eg1 = eg2, it should')
+        print('transition: {}'.format(bs.get_band_gap()['transition']))
 
         return eg1, eg2, eg_direct
 
@@ -129,8 +130,11 @@ if __name__=='__main__':
     # print(va.get_equilibrium_reaction_energy())
 
     #test get_eg
-    vasprun_file = '/Users/yao/Google Drive/data/2116/HSE_SOC/Cs2In1In1Cl6/vasprun.xml'
+    # vasprun_file = '/Users/yao/Google Drive/data/2116/HSE_SOC/Cs2In1In1Cl6/vasprun.xml'
+    # va = VasprunAnalysis(vasprun_file)
+    # print(va.get_eg())
+
+    vasprun_file = '/Users/yao/Google Drive/data/2116/InTl/tetragonal_exp/HSEsol_relax_lattice/vasprun.xml'
     va = VasprunAnalysis(vasprun_file)
     print(va.get_eg())
-
 

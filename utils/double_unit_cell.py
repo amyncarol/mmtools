@@ -33,7 +33,7 @@ def double_unit_cell(struc):
 		species.append(site.specie)
 		coords.append(site.coords)
 
-	new_struc = Structure(new_lattice, species, coords, coords_are_cartesian=True)
+	new_struc = Structure(new_lattice, species, coords, to_unit_cell=True, coords_are_cartesian=True)
 	return new_struc
 
 if __name__=='__main__':
